@@ -1,0 +1,179 @@
+// User Schema
+user : {
+	_id,
+	emailId,
+	name,
+	contact,
+	subscription,
+	passport[],
+	visa[],
+	preferencesId,
+	tripInquiry[],
+	pastTrips[],
+	visaInquiry[],
+	passportInquiry[]
+}
+
+// Passport Schema
+passport : {
+	_id,
+	nameAccordingToPassport,
+	passportNumber,
+	expiryDate
+}
+
+// Visa Schema
+visa : {
+	_id,
+	nameAccordingToPassport,
+	passportNumber,
+	visaNumber,
+	expiryDate,
+	country
+}
+
+// Preferences Schema
+preferences : {
+	_id,
+	culinary, //Vegetarian, Non Vegetarian, Vegan, Jain, Other:, 
+	flightPreference, //Economy, Premium Economy, Business Class, First Class.
+	flightSeatPreference, //Aisle, Window, Middle, Emergency Exit.
+	seatbeltExtender, //boolean
+	wheelChair, //boolean
+	modeOfTransfer, //bus, train, self drive, chauffer, cruise, helicopter
+	transferBases, // sharing, private
+	languagePrefered,// Gujarati, english, other
+	accomodation, //Budget Hotels & Apartments, Luxury Hotels & Apartments,Boutique Hotels,Business Hotels,Specific Location Preference Accommodation,Specific Amenities Preference Accommodation
+	roomCategory, //Garden View, City View, With Balcony, Pool View, Private Pool, Not Applicable, 
+	smoker, //boolean
+	additionalTravelExperience, //eco-friendly, singles trip, couple friendly, etc
+	methodOfCommunication, //whatsapp, sms, call, email, etc
+	budgetPreference, //per person, per couple, per family
+	paymentMode, //cash, cheque, banktransfer, online transfer, debit/credit card.
+	activityPreferences, //Rating of 0 to 5 for each of : Leisure, Adventure, History & Art, Food & Beverage Tours, Shopping, Fitness & Wellness, Local Festivals, Local Events, Learning Experiences, 
+
+}
+
+// Trip Schema
+tripInquiryForm: {
+	_id,
+	intendedDateOfDeparture,
+	intendedDateOfArrival,
+	passengers : {
+		adult,
+		child,
+		infant
+	}, 
+	durationOfTravel,
+	cityOfDeparture,
+	itinaryPace, //(range - 1-10)
+	occasion,
+	atmosphere,
+	meals:{
+		breakfast, //boolean
+		lunch,
+		dinner
+	},
+	timeline: [{
+		title,
+		date,
+		remark
+	}],
+	budgetAmount,
+	quotesFromOtherCompanies,
+	//quoteFileFromOtherCompany,
+	howDoYouKnowUs, //Repeat Client, Personal Referral, Community Event, Google Search, Facebook/Instagram, Website, Other:, 
+	
+}
+
+// Tickets Schema
+ticket : {
+	_id,
+	nameOfPassenger,
+	date,
+	path //File Path
+}
+
+// Voucher Schema
+voucher: {
+	type, //Hotel, Activity, Attraction, Transfer
+	status,
+	amendments : [{
+		dateTime,
+		message
+	}],
+	path //File Path
+}
+
+// Plan Schema
+plan: {
+	title,
+	content
+}
+
+// Quote Schema
+quote: {
+	basic,
+	hotels,
+	sightseeing,
+	finalCost
+}
+
+// VisaInquiry Schema
+visaInquiry: {
+	documentRequest,
+	paymentRequest,
+	status,
+	remark
+}
+
+// PassportInquiry
+passportInquiry: {
+	documentRequest,
+	paymentRequest,
+	status,
+	remark
+}
+
+// TripInquiry
+tripInquiry: {
+	_id,
+	tripId,
+	userId,
+	tripInquiryFormId,
+	documentRequest,
+	paymentRequest,
+	quotes, //Array of quote
+	plans, // Array of plan
+	status,
+	remark
+}
+
+
+// PaymentRequest Schema
+paymentRequest: {
+	_id,
+	amount,
+	status,
+	content,
+	discount
+}
+
+// documentRequest Schema
+documentRequest: {
+	_id,
+	title,
+	content,
+	status
+}
+
+
+// Payment Schema
+payments: {
+	inquiryId,
+	inquiryType,
+	amount,
+	datetime,
+	transactionId,
+	status, //success/fail
+}
